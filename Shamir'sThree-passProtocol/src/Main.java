@@ -9,12 +9,14 @@ public class Main {
         boolean answer;
 
         Random random = new Random();
-        x = 1 + random.nextInt(p - 2);// random 1 from p-1
-        Ca = 1 + random.nextInt(100 - 1); // random 1 from 101
-        Cb = 1 + random.nextInt(100 - 1); // random 1 from 101
+        do {
+            x = 1 + random.nextInt(p - 2);// random 1 from p-1
+            Ca = 1 + random.nextInt(100 - 1); // random 1 from 101
+            Cb = 1 + random.nextInt(100 - 1); // random 1 from 101
 
-        Da = findingDbyC(Ca,p);
-        Db = findingDbyC(Cb,p);
+            Da = findingDbyC(Ca, p - 1);
+            Db = findingDbyC(Cb, p - 1);
+        }while ((((Ca * Da) % (p - 1)) != 1)||(((Cb * Db) % (p - 1)) != 1));
 
         y = modexp(x,Ca,p);
         z = modexp(y,Cb,p);
@@ -35,9 +37,23 @@ public class Main {
     }
 
     public static long findingDbyC(long c, long p) {
-        long d = 1;
-        while (((c * d) % (p - 1)) != 1) {
-            d++;
+        long oldp = p;
+        long d = 0;
+        long newd = 1;
+        long tmp;
+        long newc;
+        long tmpd;
+        while (c != 0) {
+            tmp = p / c;
+            newc = p - c * tmp;
+            p = c;
+            c = newc;
+            tmpd = d - newd * tmp;
+            d = newd;
+            newd = tmpd;
+        }
+        if (d < 0) {
+            d += oldp;
         }
         return d;
     }
