@@ -3,7 +3,7 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-        int p = 19;//30803;
+        int p = 30803;
         int g = 2;
         long x, Da, Db, k, y, w;
         int Ca, Cb, r;
@@ -11,14 +11,14 @@ public class Main {
 
         Random random = new Random();
 
-        x = 4;//1 + random.nextInt(p - 2);// random 1 from p-1
-        Ca = 7;//1 + random.nextInt(100 - 1); // random 1 from 101
-        Cb = 3;//1 + random.nextInt(100 - 1); // random 1 from 101
+        x = 1 + random.nextInt(p - 2);// random 1 from p-1
+        Ca = 1 + random.nextInt(100 - 1); // random 1 from 101
+        Cb = 1 + random.nextInt(100 - 1); // random 1 from 101
 
         Da = modexp(g, Ca, p);
         Db = modexp(g, Cb, p);
 
-        r = 5;//1 + random.nextInt(100 - 1); // random 1 from 101
+        r = 1 + random.nextInt(100 - 1); // random 1 from 101
 
         k = modexp(g, r, p);
         y = modexp(modexp(x, 1, p) * modexp(Db, r, p), 1, p);
