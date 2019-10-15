@@ -16,7 +16,7 @@ public class Main {
             D = findingDbyC(C, (P - 1) * (Q - 1));
         } while ((C * D) % ((P - 1) * (Q - 1)) != 1);
 
-        x = 1 + random.nextInt(P * Q - 1);// random 1 from 1000
+        x = 1 + random.nextInt(P * Q - 1);// random 1 from N
 
         h = hashFunction(x,N);
 
