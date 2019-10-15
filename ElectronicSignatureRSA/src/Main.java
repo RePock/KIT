@@ -18,7 +18,7 @@ public class Main {
 
         x = 1 + random.nextInt(P * Q - 1);// random 1 from 1000
 
-        h = hashFunction(x);
+        h = hashFunction(x,N);
 
         y = modexp(h, C, N);
         w = modexp(y, D, N);
@@ -58,8 +58,7 @@ public class Main {
         return d;
     }
 
-    public static int hashFunction(long x) {
-        int N = 13;
+    public static int hashFunction(long x,long N) {
         double A = 0.618033;
         int h = (int) (N * (x * A % 1));
         return h;
